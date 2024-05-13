@@ -1,6 +1,5 @@
 /** @format */
 
-import React from "react";
 import ItemList from "./ItemList";
 
 export default function Repository({
@@ -28,15 +27,15 @@ export default function Repository({
 			{queryData?.length ? (
 				<div className='query-items'>
 					<div className='query-item-list'>
-						{queryData && queryData.length && loading ? (
-							<span>Loading...</span>
-						) : (
+						{queryData && queryData.length && !loading ? (
 							<ItemList
 								query={query}
 								repo_list={queryData}
 								queryFetchHandler={queryFetchHandler}
 								pageNumber={pageNumber}
 							/>
+						) : (
+							<span>Loading...</span>
 						)}
 					</div>
 					<span className='query-item_page'>Page : {pageNumber}</span>

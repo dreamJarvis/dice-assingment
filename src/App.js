@@ -56,7 +56,7 @@ function App() {
 	// 	return list;
 	// };
 
-	const debounceQuery = useDebounce(queryFetchHandler);
+	const debounceQuery = useDebounce(queryFetchHandler, setLoading);
 
 	const queryInputHandler = (value) => {
 		setQuery(value);
@@ -65,7 +65,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		queryFetchHandler(query, pageNumber);
+		debounceQuery(query, pageNumber);
 	}, [pageNumber]);
 
 	return (
@@ -87,55 +87,6 @@ function App() {
 				loading={loading}
 				queryFetchHandler={queryFetchHandler}
 			/>
-			{/* <div className='container'>
-				{totalPages > 1 ? (
-					<div className='btn prev-page'>
-						<button
-							className='prev-page-btn'
-							onClick={() => setPageNumber(Math.max(pageNumber - 1, 1))}>
-							{"<"}
-						</button>
-					</div>
-				) : (
-					<></>
-				)}
-				{queryData?.length > 1 ? (
-					<div className='query-items'>
-						<div className='query-item-list'>
-							{queryData && queryData.length && loading ? (
-								<span>Loading...</span>
-							) : (
-								<ItemList
-									query={query}
-									repo_list={queryData}
-									queryFetchHandler={queryFetchHandler}
-									pageNumber={pageNumber}
-								/>
-							)}
-						</div>
-						<span className='query-item_page'>Page : {pageNumber}</span>
-					</div>
-				) : (
-					<span>no input...</span>
-				)}
-				{totalPages > 1 ? (
-					<div className='btn next-page'>
-						<button
-							className='next-page-btn'
-							onClick={() =>
-								setPageNumber(Math.min(Math.max(pageNumber, 1) + 1, totalPages))
-							}>
-							{">"}
-						</button>
-					</div>
-				) : (
-					<></>
-				)}
-			</div> */}
-
-			{/* 
-				shows the list of repo
-			*/}
 		</div>
 	);
 }

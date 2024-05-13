@@ -1,9 +1,12 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { GITHUB_REPO_SEARCH_URL, LIMIT_PER_PAGE } from "./utils/constants";
 import ItemList from "./components/ItemList";
+import useFetch from "./hooks/useFetch";
+import useDebounce from "./hooks/useDebounce";
+import Repository from "./components/Repository";
 
 /* 
 	TODO: implement aria-tags after project is done
@@ -14,13 +17,16 @@ import ItemList from "./components/ItemList";
 
 // q=tetris+language:assembly&sort=stars&order=desc
 function App() {
-	const [query, setQuery] = useState();
+	const [query, setQuery] = useState("");
 	const [pageNumber, setPageNumber] = useState(1);
-	const [queryData, setQueryData] = useState("");
+	const [queryData, setQueryData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [totalPages, setTotalPages] = useState(0);
+	// const fetchRepo = useFetch();
 
-	const queryHandler = () => {
+	// TODO: debounding on query
+
+	const queryFetchHandler = (query, pageNumber) => {
 		fetch(
 			GITHUB_REPO_SEARCH_URL +
 				`${query}&per_page=${LIMIT_PER_PAGE}&page=${pageNumber}`
@@ -50,18 +56,39 @@ function App() {
 	// 	return list;
 	// };
 
+	const debounceQuery = useDebounce(queryFetchHandler);
+
+	const queryInputHandler = (value) => {
+		setQuery(value);
+		setPageNumber(1);
+		debounceQuery(value, 1);
+	};
+
+	useEffect(() => {
+		queryFetchHandler(query, pageNumber);
+	}, [pageNumber]);
+
 	return (
 		<div className='App'>
 			<div className='query'>
 				<input
 					type='text'
 					value={query}
-					onChange={(e) => setQuery(e.target.value)}
+					onChange={(e) => queryInputHandler(e.target.value)}
 				/>
-				<button onClick={queryHandler}>search</button>
 			</div>
-			{queryData.length > 1 ? (
-				<div className='container'>
+
+			<Repository
+				queryData={queryData}
+				totalPages={totalPages}
+				setPageNumber={setPageNumber}
+				pageNumber={pageNumber}
+				query={query}
+				loading={loading}
+				queryFetchHandler={queryFetchHandler}
+			/>
+			{/* <div className='container'>
+				{totalPages > 1 ? (
 					<div className='btn prev-page'>
 						<button
 							className='prev-page-btn'
@@ -69,34 +96,42 @@ function App() {
 							{"<"}
 						</button>
 					</div>
+				) : (
+					<></>
+				)}
+				{queryData?.length > 1 ? (
 					<div className='query-items'>
 						<div className='query-item-list'>
 							{queryData && queryData.length && loading ? (
 								<span>Loading...</span>
 							) : (
 								<ItemList
+									query={query}
 									repo_list={queryData}
-									queryHandler={queryHandler}
+									queryFetchHandler={queryFetchHandler}
 									pageNumber={pageNumber}
 								/>
 							)}
 						</div>
 						<span className='query-item_page'>Page : {pageNumber}</span>
 					</div>
-
+				) : (
+					<span>no input...</span>
+				)}
+				{totalPages > 1 ? (
 					<div className='btn next-page'>
 						<button
 							className='next-page-btn'
 							onClick={() =>
-								setPageNumber(Math.min(pageNumber + 1, totalPages))
+								setPageNumber(Math.min(Math.max(pageNumber, 1) + 1, totalPages))
 							}>
 							{">"}
 						</button>
 					</div>
-				</div>
-			) : (
-				<span>no input...</span>
-			)}
+				) : (
+					<></>
+				)}
+			</div> */}
 
 			{/* 
 				shows the list of repo

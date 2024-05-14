@@ -1,12 +1,12 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-import { LIMIT_PER_PAGE } from "./utils/constants";
-import useDebounce from "./hooks/useDebounce";
-import Repository from "./components/repository/Repository";
-import useFetch from "./hooks/useFetch";
-import useSortByAttribute from "./hooks/useSortByAttribute";
-import InputQuery from "./components/InputQuery";
+import useSortByAttribute from "../../hooks/useSortByAttribute";
+import useFetch from "../../hooks/useFetch";
+import { LIMIT_PER_PAGE } from "../../utils/constants";
+import useDebounce from "../../hooks/useDebounce";
+import InputQuery from "../InputQuery";
+import Repository from "../repository/Repository";
 
 /* 
 	TODO: Error Handling --> top priority

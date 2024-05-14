@@ -3,6 +3,9 @@
 import { useState } from "react";
 import ItemList from "./RepositoryItemList";
 
+/* 
+	TODO:  error-handling
+*/
 export default function Repository({
 	queryData,
 	totalPages,

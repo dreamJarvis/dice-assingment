@@ -5,6 +5,7 @@ import RepositoryPage from "./components/pages/RepositoryPage";
 
 /* 
 	TODO: Error Handling --> top priority
+	TODO: Apply modal-view to repo-card on click
 
 	TODO: implement aria-tags after project is done
 	TODO: add Pagination

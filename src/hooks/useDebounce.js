@@ -9,7 +9,6 @@ export default function useDebounce(handler, loader) {
 		loader(true);
 		clearTimeout(timeout.current);
 		timeout.current = setTimeout(() => {
-			// console.log("debounce : ", ...args);
 			handler(...args);
 		}, QUERY_DELAY);
 	};

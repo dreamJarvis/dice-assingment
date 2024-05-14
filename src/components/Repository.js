@@ -1,15 +1,17 @@
 /** @format */
 
+import { useEffect } from "react";
 import ItemList from "./ItemList";
 
+/* 
+TODO: apply sorting
+*/
 export default function Repository({
 	queryData,
 	totalPages,
 	setPageNumber,
 	pageNumber,
-	query,
 	loading,
-	queryFetchHandler,
 }) {
 	return (
 		<div className='container'>
@@ -28,17 +30,17 @@ export default function Repository({
 				<div className='query-items'>
 					<div className='query-item-list'>
 						{queryData && queryData.length && !loading ? (
-							<ItemList
-								query={query}
-								repo_list={queryData}
-								queryFetchHandler={queryFetchHandler}
-								pageNumber={pageNumber}
-							/>
+							<ItemList repo_list={queryData} />
 						) : (
 							<span>Loading...</span>
 						)}
 					</div>
-					<span className='query-item_page'>Page : {pageNumber}</span>
+					{/* 
+                  TODO: allow user to edit page number, manually
+               */}
+					<span className='query-item_page'>
+						Page : {pageNumber} / {totalPages}
+					</span>
 				</div>
 			) : (
 				<span>no input...</span>

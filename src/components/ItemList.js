@@ -1,18 +1,8 @@
 /** @format */
 
-import React, { useEffect } from "react";
 import Item from "./Item";
 
-export default function ItemList({
-	repo_list,
-	queryFetchHandler,
-	pageNumber,
-	query,
-}) {
-	// useEffect(() => {
-	// 	queryFetchHandler(query, pageNumber);
-	// }, [pageNumber]);
-
+export default function ItemList({ repo_list }) {
 	return (
 		<div className='repo_list'>
 			{repo_list &&

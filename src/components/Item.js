@@ -8,6 +8,7 @@ export default function Item({ repo_data }) {
 		language,
 		owner,
 		score,
+		stargazers_count,
 		updated_at,
 		created_at,
 	} = repo_data;

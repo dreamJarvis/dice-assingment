@@ -2,7 +2,7 @@
 
 import { GITHUB_REPO_SEARCH_URL, LIMIT_PER_PAGE } from "../utils/constants";
 
-export default function useFetch() {
+export default function useFetch(errorHandler) {
 	return async (query, pageNumber) => {
 		let fetchAPI = `${query}&per_page=${LIMIT_PER_PAGE}&page=${pageNumber}`;
 		try {
@@ -12,6 +12,7 @@ export default function useFetch() {
 			return fetchDataJson;
 		} catch (err) {
 			console.log("err : ", err);
+			errorHandler(err);
 			throw new Error(err);
 		}
 	};

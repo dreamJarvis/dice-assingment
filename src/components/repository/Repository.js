@@ -46,7 +46,7 @@ export default function Repository({
 					{/* 
                   TODO: allow user to edit page number, manually
                */}
-					{openPageSetter ? (
+					{/* {openPageSetter ? (
 						<div>
 							<input
 								type='number'
@@ -64,7 +64,7 @@ export default function Repository({
 							onDoubleClick={() => setOpenPageSetter(true)}>
 							Page : {pageNumber} / {totalPages}
 						</span>
-					)}
+					)} */}
 				</div>
 			) : (
 				<span>no input...</span>

@@ -7,6 +7,8 @@ import { LIMIT_PER_PAGE } from "../../utils/constants";
 import useDebounce from "../../hooks/useDebounce";
 import InputQuery from "../InputQuery";
 import Repository from "../repository/Repository";
+import FetchError from "../../Errors/FetchError";
+import PageSetter from "../PageSetter";
 
 /* 
 	TODO: Error Handling --> top priority
@@ -22,11 +24,12 @@ export default function RepositoryPage() {
 	const [queryData, setQueryData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [totalPages, setTotalPages] = useState(0);
+	const [error, setError] = useState(null);
 	const [sortingAttribute, setSortingAttribute] = useState("stargazers_count");
 	const [sortingOrder, setSortingOrder] = useState("asc");
 
 	const sortQueryByAttribute = useSortByAttribute();
-	const fetchRepo = useFetch();
+	const fetchRepo = useFetch(setError);
 
 	useEffect(() => {
 		debounceQuery(query, pageNumber);
@@ -39,13 +42,20 @@ export default function RepositoryPage() {
 	const queryFetchHandler = async (query, pageNumber) => {
 		try {
 			const data = await fetchRepo(query, pageNumber);
-			setTotalPages(Math.floor(data?.total_count / LIMIT_PER_PAGE));
-			setQueryData(
-				sortQueryByAttribute(data?.items, sortingAttribute, sortingOrder)
-			);
-			setLoading(false);
+			if (data?.items) {
+				setTotalPages(Math.floor(data?.total_count / LIMIT_PER_PAGE));
+				setQueryData(
+					sortQueryByAttribute(data?.items, sortingAttribute, sortingOrder)
+				);
+				setLoading(false);
+				setError(null);
+			} else {
+				setError(data?.message);
+				setLoading(true);
+			}
 		} catch (err) {
 			setLoading(true);
+			setError(err);
 			throw new Error(err);
 		}
 	};
@@ -76,12 +86,21 @@ export default function RepositoryPage() {
 				setSortingOrder={setSortingOrder}
 				queryInputHandler={queryInputHandler}
 			/>
-			<Repository
-				queryData={queryData}
-				totalPages={totalPages}
-				setPageNumber={setPageNumber}
+			{error ? (
+				<FetchError error={error} />
+			) : (
+				<Repository
+					queryData={queryData}
+					totalPages={totalPages}
+					setPageNumber={setPageNumber}
+					pageNumber={pageNumber}
+					loading={loading}
+				/>
+			)}
+			<PageSetter
 				pageNumber={pageNumber}
-				loading={loading}
+				setPageNumber={setPageNumber}
+				totalPages={totalPages}
 			/>
 		</div>
 	);

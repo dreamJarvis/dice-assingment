@@ -41,7 +41,7 @@
 	overflow-y: scroll;
 }
 
-.repo_list {
+.repo-list {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -91,9 +91,23 @@
 	width: 50px;
 }
 
-.query-item_page {
+.query-item-page {
+	font-size: 23px;
 	position: absolute;
-	bottom: 100px;
+	bottom: 90px;
+	left: 45%;
+}
+
+.query-item-page > input {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.query-item-page > button {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 5px;
 }
 
 .repo-input-query {
@@ -123,4 +137,12 @@
 
 .query-sorting > select > option {
 	font-size: 1rem;
+}
+
+.error-handler {
+	position: absolute;
+	font-size: 1.5rem;
+	color: red;
+	top: 50%;
+	left: 35%;
 }

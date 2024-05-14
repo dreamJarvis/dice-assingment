@@ -9,8 +9,7 @@ hello, i have created a web app where you can find any public github repo with t
 ### header
 
 here we have a input box, and a sorting dropdown.
-the sorting dropdown, provides you with the following attributes to sort the fetched repositories
-A Sort field with the following options- Stars, watchers count, score, name,created_at, updated_at.
+the sorting dropdown, provides you with the following attributes to sort the fetched repositories : Stars, watchers count, score, name,created_at, updated_at.
 
 ### container
 

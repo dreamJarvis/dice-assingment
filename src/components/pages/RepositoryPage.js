@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import useSortByAttribute from "../../hooks/useSortByAttribute";
 import useFetch from "../../hooks/useFetch";
-import { LIMIT_PER_PAGE } from "../../utils/constants";
+import { EMPTY_INPUT_ERROR, LIMIT_PER_PAGE } from "../../utils/constants";
 import useDebounce from "../../hooks/useDebounce";
 import InputQuery from "../InputQuery";
 import Repository from "../repository/Repository";
@@ -25,7 +25,7 @@ export default function RepositoryPage() {
 	const fetchRepo = useFetch(setError);
 
 	useEffect(() => {
-		debounceQuery(query, pageNumber);
+		if (query.length && pageNumber > 0) debounceQuery(query, pageNumber);
 	}, [pageNumber]);
 
 	useEffect(() => {
@@ -43,11 +43,11 @@ export default function RepositoryPage() {
 				setLoading(false);
 				setError(null);
 			} else {
-				setTotalPages(0);
 				setError(data?.message);
 				setLoading(true);
 			}
 		} catch (err) {
+			setPageNumber(0);
 			setTotalPages(0);
 			setLoading(true);
 			setError(err);
@@ -56,9 +56,14 @@ export default function RepositoryPage() {
 	};
 
 	const debounceQuery = useDebounce(queryFetchHandler, setLoading);
-
 	const queryInputHandler = (value) => {
 		setQuery(value);
+		if (!value.length) {
+			setError(EMPTY_INPUT_ERROR);
+			setPageNumber(0);
+			setTotalPages(0);
+			return;
+		}
 		setPageNumber(1);
 		debounceQuery(value, 1);
 	};
@@ -90,9 +95,10 @@ export default function RepositoryPage() {
 					setPageNumber={setPageNumber}
 					pageNumber={pageNumber}
 					loading={loading}
+					error={error}
 				/>
 			)}
-			{totalPages > 0 ? (
+			{totalPages > 0 && !error ? (
 				<PageSetter
 					pageNumber={pageNumber}
 					setPageNumber={setPageNumber}

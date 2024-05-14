@@ -1,6 +1,6 @@
 /** @format */
 
-import ItemList from "./RepositoryItemList";
+import RepositoryItemList from "./RepositoryItemList";
 
 export default function Repository({
 	queryData,
@@ -33,7 +33,7 @@ export default function Repository({
 						aria-label='query-item-list'
 						aria-description='contains list of all the repositories fetched from server'>
 						{queryData && queryData.length && !loading ? (
-							<ItemList repo_list={queryData} />
+							<RepositoryItemList repo_list={queryData} />
 						) : (
 							<span>Loading...</span>
 						)}

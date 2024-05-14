@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dice-assingment/static/css/main.d0860c2b.css",
+    "main.js": "/dice-assingment/static/js/main.87bfa1d6.js",
+    "static/js/453.b082f2f5.chunk.js": "/dice-assingment/static/js/453.b082f2f5.chunk.js",
+    "index.html": "/dice-assingment/index.html",
+    "main.d0860c2b.css.map": "/dice-assingment/static/css/main.d0860c2b.css.map",
+    "main.87bfa1d6.js.map": "/dice-assingment/static/js/main.87bfa1d6.js.map",
+    "453.b082f2f5.chunk.js.map": "/dice-assingment/static/js/453.b082f2f5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0860c2b.css",
+    "static/js/main.87bfa1d6.js"
+  ]
+}

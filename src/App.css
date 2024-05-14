@@ -152,9 +152,10 @@
 }
 
 .error-handler {
+	width: 50%;
 	position: absolute;
 	font-size: 1.5rem;
 	color: red;
 	top: 50%;
-	left: 35%;
+	left: 25%;
 }

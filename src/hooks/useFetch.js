@@ -8,10 +8,8 @@ export default function useFetch(errorHandler) {
 		try {
 			const fetchData = await fetch(GITHUB_REPO_SEARCH_URL + fetchAPI);
 			const fetchDataJson = await fetchData.json();
-			// console.log("fetchDataJson : ", fetchDataJson);
 			return fetchDataJson;
 		} catch (err) {
-			// console.log("err : ", err);
 			errorHandler(err);
 			throw new Error(err);
 		}

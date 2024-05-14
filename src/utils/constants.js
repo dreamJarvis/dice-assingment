@@ -12,3 +12,4 @@ export const QUERY_SORT_OPTIONS = new Map([
 	["updated_at", "date"],
 	["name", "string"],
 ]);
+export const EMPTY_INPUT_ERROR = "Please enter Valid Input!";

@@ -46,10 +46,12 @@ export default function RepositoryPage() {
 				setLoading(false);
 				setError(null);
 			} else {
+				setTotalPages(0);
 				setError(data?.message);
 				setLoading(true);
 			}
 		} catch (err) {
+			setTotalPages(0);
 			setLoading(true);
 			setError(err);
 			throw new Error(err);
@@ -93,11 +95,15 @@ export default function RepositoryPage() {
 					loading={loading}
 				/>
 			)}
-			<PageSetter
-				pageNumber={pageNumber}
-				setPageNumber={setPageNumber}
-				totalPages={totalPages}
-			/>
+			{totalPages > 0 ? (
+				<PageSetter
+					pageNumber={pageNumber}
+					setPageNumber={setPageNumber}
+					totalPages={totalPages}
+				/>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }

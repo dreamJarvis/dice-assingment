@@ -3,15 +3,6 @@
 import "./App.css";
 import RepositoryPage from "./components/pages/RepositoryPage";
 
-/* 
-	TODO: Error Handling --> top priority
-	TODO: Apply modal-view to repo-card on click
-
-	TODO: implement aria-tags after project is done
-	TODO: add Pagination
-	TODO: fluid pagination
-
-*/
 function App() {
 	return (
 		<div className='App'>
@@ -21,9 +12,6 @@ function App() {
 }
 
 export default App;
-// https://api.github.com/search/repositories?q=Q&per_page=10&page=3
-// q=tetris+language:assembly&sort=stars&order=desc
 /* 
-7969
-882
+https://www.loom.com/share/c139c06308c44d5c9c4ed14c2a8b5628?sid=9286c65e-0bcd-4da8-8ffe-1b084a8a139b
 */

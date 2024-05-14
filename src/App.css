@@ -1,6 +1,7 @@
 /** @format */
 
-.App {
+.App,
+.repository {
 	display: flex;
 	justify-content: center;
 	align-items: center;

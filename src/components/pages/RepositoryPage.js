@@ -11,11 +11,7 @@ import FetchError from "../../Errors/FetchError";
 import PageSetter from "../PageSetter";
 
 /* 
-	TODO: Error Handling --> top priority
-
 	TODO: implement aria-tags after project is done
-	TODO: add Pagination
-	TODO: fluid pagination
 
 */
 export default function RepositoryPage() {

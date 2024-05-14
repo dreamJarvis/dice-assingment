@@ -4,7 +4,7 @@ import { QUERY_SORT_OPTIONS } from "../utils/constants";
 
 export default function useSortByAttribute() {
 	return (list, attribute, order) => {
-		console.log("useSortByAttribute", attribute);
+		// console.log("useSortByAttribute", attribute);
 		const attributeType = QUERY_SORT_OPTIONS.get(attribute);
 		const sortedQueryList = list?.sort((item1, item2) => {
 			if (order === "asc") {

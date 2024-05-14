@@ -1,11 +1,8 @@
 /** @format */
 
-import { useEffect } from "react";
+import { useState } from "react";
 import ItemList from "./RepositoryItemList";
 
-/* 
-TODO: apply sorting
-*/
 export default function Repository({
 	queryData,
 	totalPages,
@@ -13,6 +10,14 @@ export default function Repository({
 	pageNumber,
 	loading,
 }) {
+	const [openPageSetter, setOpenPageSetter] = useState(false);
+	const [editPageNum, setEditPageNum] = useState(pageNumber);
+
+	const editPageNumberHandler = () => {
+		setOpenPageSetter(false);
+		setPageNumber(editPageNum);
+	};
+
 	return (
 		<div className='container'>
 			{totalPages ? (
@@ -38,9 +43,25 @@ export default function Repository({
 					{/* 
                   TODO: allow user to edit page number, manually
                */}
-					<span className='query-item_page'>
-						Page : {pageNumber} / {totalPages}
-					</span>
+					{openPageSetter ? (
+						<div>
+							<input
+								type='number'
+								onChange={(e) =>
+									setEditPageNum(
+										Math.min(Math.max(e.target.value, 1), totalPages)
+									)
+								}
+							/>
+							<button onClick={editPageNumberHandler}>set</button>
+						</div>
+					) : (
+						<span
+							className='query-item_page'
+							onDoubleClick={() => setOpenPageSetter(true)}>
+							Page : {pageNumber} / {totalPages}
+						</span>
+					)}
 				</div>
 			) : (
 				<span>no input...</span>

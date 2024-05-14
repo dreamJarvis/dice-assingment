@@ -1,18 +1,21 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-import "./App.css";
-import { LIMIT_PER_PAGE, QUERY_SORT_OPTIONS } from "./utils/constants";
+import { LIMIT_PER_PAGE } from "./utils/constants";
 import useDebounce from "./hooks/useDebounce";
 import Repository from "./components/Repository";
 import useFetch from "./hooks/useFetch";
 import useSortByAttribute from "./hooks/useSortByAttribute";
 import InputQuery from "./components/InputQuery";
+import "./App.css";
 
 /* 
+	TODO: Error Handling --> top priority
+
 	TODO: implement aria-tags after project is done
 	TODO: add Pagination
 	TODO: fluid pagination
+
 */
 // stargazers_count, watchers_count, score, name, created_at, updated_at
 function App() {

@@ -14,7 +14,10 @@ export default function PageSetter({ pageNumber, setPageNumber, totalPages }) {
 	return (
 		<div>
 			{openPageSetter ? (
-				<div className='query-item-page'>
+				<div
+					className='query-item-page'
+					aria-label='query-item-page'
+					aria-description='select page number from total pages of data'>
 					<input
 						type='number'
 						onChange={(e) =>
@@ -26,6 +29,7 @@ export default function PageSetter({ pageNumber, setPageNumber, totalPages }) {
 			) : (
 				<span
 					className='query-item-page'
+					aria-label='query-item-page'
 					onDoubleClick={() => setOpenPageSetter(true)}>
 					Page : {pageNumber} / {totalPages}
 				</span>

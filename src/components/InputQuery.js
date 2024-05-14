@@ -11,8 +11,11 @@ export default function InputQuery({
 	queryInputHandler,
 }) {
 	return (
-		<div className='repo-input-query'>
-			<div className='input-query'>
+		<div
+			className='repo-input-query'
+			aria-label='repo-input-query'
+			aria-description='input for repository'>
+			<div className='input-query' aria-label='input-query'>
 				<input
 					type='text'
 					placeholder='type repo name...'
@@ -21,7 +24,10 @@ export default function InputQuery({
 				/>
 			</div>
 			{queryData && (
-				<div className='query-sorting'>
+				<div
+					className='query-sorting'
+					aria-label='query-sorting'
+					aria-description='apply sorting to fetched repository data'>
 					<select
 						name='query-sorting_attr'
 						id='query-sorting_attr'

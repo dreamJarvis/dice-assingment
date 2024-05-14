@@ -10,10 +10,6 @@ import Repository from "../repository/Repository";
 import FetchError from "../../Errors/FetchError";
 import PageSetter from "../PageSetter";
 
-/* 
-	TODO: implement aria-tags after project is done
-
-*/
 export default function RepositoryPage() {
 	const [query, setQuery] = useState("");
 	const [pageNumber, setPageNumber] = useState(1);

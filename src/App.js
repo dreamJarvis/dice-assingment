@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { LIMIT_PER_PAGE } from "./utils/constants";
 import useDebounce from "./hooks/useDebounce";
-import Repository from "./components/Repository";
+import Repository from "./components/repository/Repository";
 import useFetch from "./hooks/useFetch";
 import useSortByAttribute from "./hooks/useSortByAttribute";
 import InputQuery from "./components/InputQuery";

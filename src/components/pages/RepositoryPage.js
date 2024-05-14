@@ -20,6 +20,7 @@ export default function RepositoryPage() {
 	const [sortingAttribute, setSortingAttribute] = useState("stargazers_count");
 	const [sortingOrder, setSortingOrder] = useState("asc");
 
+	// custom logic
 	const sortQueryByAttribute = useSortByAttribute();
 	const fetchRepo = useFetch(setError);
 

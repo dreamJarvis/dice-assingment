@@ -65,10 +65,6 @@ function App() {
 		debounceQuery(query, pageNumber);
 	}, [pageNumber]);
 
-	useEffect(() => {
-		sortQueryByAttribute(queryData, sortingAttribute, sortingOrder);
-	}, [queryData]);
-
 	const sortingHandler = () => {
 		const sortedQueryList = sortQueryByAttribute(
 			queryData,

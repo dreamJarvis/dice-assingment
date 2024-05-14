@@ -1,17 +1,7 @@
 /** @format */
 
-export default function Item({ repo_data }) {
-	const {
-		name,
-		watchers_count,
-		description,
-		language,
-		owner,
-		score,
-		stargazers_count,
-		updated_at,
-		created_at,
-	} = repo_data;
+export default function RepositoryItem({ repo_data }) {
+	const { name, watchers_count, description, language, owner } = repo_data;
 	const { avatar_url } = owner;
 
 	return (

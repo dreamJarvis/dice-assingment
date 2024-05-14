@@ -1,7 +1,7 @@
 /** @format */
 
 import { useEffect } from "react";
-import ItemList from "./ItemList";
+import ItemList from "./RepositoryItemList";
 
 /* 
 TODO: apply sorting

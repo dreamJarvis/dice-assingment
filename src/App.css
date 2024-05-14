@@ -31,8 +31,8 @@
 	display: inline;
 	padding: 10px;
 	width: 100%;
-	height: 800px;
-	margin: 4rem;
+	height: 700px;
+	margin: 2rem;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
@@ -80,24 +80,6 @@
 	margin: 10px;
 }
 
-/* .card {
-
-} */
-
-/* .page-nav {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	width: 90%;
-} */
-
-/* .navigate {
-	display: flex;
-	flex-direction: row;
-	padding: 10px;
-} */
-
 .btn {
 	margin: 10px;
 }
@@ -111,8 +93,34 @@
 
 .query-item_page {
 	position: absolute;
-	bottom: 50px;
+	bottom: 100px;
+}
+
+.repo-input-query {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
 }
 
 .input-query {
+	margin: 10px;
+}
+.input-query > input {
+	font-size: 1rem;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.query-sorting > select {
+	font-size: 1rem;
+	padding: 15px;
+	margin-left: 5px;
+	background-color: rgba(232, 232, 232, 0.665);
+	border-radius: 5px;
+}
+
+.query-sorting > select > option {
+	font-size: 1rem;
 }

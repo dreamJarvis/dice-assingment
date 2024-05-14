@@ -7,10 +7,12 @@ import useDebounce from "./hooks/useDebounce";
 import Repository from "./components/Repository";
 import useFetch from "./hooks/useFetch";
 import useSortByAttribute from "./hooks/useSortByAttribute";
+import InputQuery from "./components/InputQuery";
 
 /* 
 	TODO: implement aria-tags after project is done
 	TODO: add Pagination
+	TODO: fluid pagination
 */
 // stargazers_count, watchers_count, score, name, created_at, updated_at
 function App() {
@@ -23,6 +25,14 @@ function App() {
 	const [sortingOrder, setSortingOrder] = useState("asc");
 	const fetchRepo = useFetch();
 	const sortQueryByAttribute = useSortByAttribute();
+
+	useEffect(() => {
+		debounceQuery(query, pageNumber);
+	}, [pageNumber]);
+
+	useEffect(() => {
+		sortingHandler();
+	}, [sortingAttribute, sortingOrder]);
 
 	const queryFetchHandler = async (query, pageNumber) => {
 		try {
@@ -38,21 +48,6 @@ function App() {
 		}
 	};
 
-	/* 
-		TODO: fluid pagination
-	*/
-	// const totalNavBtns = () => {
-	// 	const list = [];
-	// 	for (let i = 1; i <= totalItemCount; i++) {
-	// 		list.push(
-	// 			<button className='nav-item' onClick={() => setPageNumber(i)}>
-	// 				{i}
-	// 			</button>
-	// 		);
-	// 	}
-	// 	return list;
-	// };
-
 	const debounceQuery = useDebounce(queryFetchHandler, setLoading);
 
 	const queryInputHandler = (value) => {
@@ -61,61 +56,24 @@ function App() {
 		debounceQuery(value, 1);
 	};
 
-	useEffect(() => {
-		debounceQuery(query, pageNumber);
-	}, [pageNumber]);
-
 	const sortingHandler = () => {
 		const sortedQueryList = sortQueryByAttribute(
 			queryData,
 			sortingAttribute,
 			sortingOrder
 		);
-		console.log("sortedQueryList : ", sortedQueryList);
 		setQueryData([...sortedQueryList]);
 	};
 
 	return (
 		<div className='App'>
-			<div className='header'>
-				<div className='input-query'>
-					<input
-						type='text'
-						value={query}
-						onChange={(e) => queryInputHandler(e.target.value)}
-					/>
-				</div>
-				{queryData && (
-					<div className='query-sorting'>
-						<select
-							name='query-sorting_attr'
-							id='query-sorting_attr'
-							onChange={(e) => setSortingAttribute(e.target.value)}>
-							{(() => {
-								const list = [];
-								QUERY_SORT_OPTIONS.forEach((value, key) => {
-									list.push(
-										<option key={key} value={key}>
-											{key}
-										</option>
-									);
-								});
-								return list;
-							})()}
-						</select>
-						<select
-							name='query-sort_order'
-							id='query-sort_order'
-							onChange={(e) => setSortingOrder(e.target.value)}>
-							<option value='asc'>asc</option>
-							<option value='desc'>desc</option>
-						</select>
-						<button className='query-sort-btn' onClick={sortingHandler}>
-							apply
-						</button>
-					</div>
-				)}
-			</div>
+			<InputQuery
+				queryData={queryData}
+				query={query}
+				setSortingAttribute={setSortingAttribute}
+				setSortingOrder={setSortingOrder}
+				queryInputHandler={queryInputHandler}
+			/>
 			<Repository
 				queryData={queryData}
 				totalPages={totalPages}

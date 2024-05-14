@@ -42,7 +42,7 @@ export default function Repository({
 			) : (
 				<span>no input...</span>
 			)}
-			{totalPages > 1 ? (
+			{totalPages > 0 ? (
 				<div className='btn next-page'>
 					<button
 						className='next-page-btn'

@@ -15,7 +15,7 @@ export default function PageSetter({ pageNumber, setPageNumber, totalPages }) {
 		<div className='query-item-page'>
 			{openPageSetter ? (
 				<div
-					className='query-item-page-setter'
+					className='query-item-page-setter query-item-page-setter-input'
 					aria-label='query-item-page-setter'
 					aria-description='select page number from total pages of data'>
 					<input

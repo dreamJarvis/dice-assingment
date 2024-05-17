@@ -17,6 +17,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .query-items {
 	width: 100%;
 	display: flex;
@@ -40,6 +41,21 @@
 	border-radius: 20px;
 	overflow-y: scroll;
 }
+
+.query-item-list::-webkit-scrollbar {
+	width: 10px;
+}
+
+.query-item-list::-webkit-scrollbar-track {
+	background: rgba(228, 228, 228, 0.821);
+}
+
+.query-item-list::-webkit-scrollbar-thumb {
+	background-color: rgb(200, 200, 200);
+	border-radius: 20px;
+	border: none;
+}
+
 
 .repo-list {
 	display: flex;
@@ -81,13 +97,13 @@
 	transition: 0.3s ease-in-out;
 }
 
-.repo-avatar > img {
+.repo-avatar>img {
 	width: 100px;
 	height: 100px;
 	border-radius: 10px;
 }
 
-.repo-data > span {
+.repo-data>span {
 	margin: 10px;
 	text-align: left;
 }
@@ -105,18 +121,17 @@
 
 .query-item-page {
 	font-size: 23px;
-	position: absolute;
 	bottom: 50px;
 	left: 45%;
 }
 
-.query-item-page > input {
+.query-item-page>input {
 	font-size: 1rem;
 	padding: 10px;
 	border-radius: 5px;
 }
 
-.query-item-page > button {
+.query-item-page>button {
 	font-size: 1rem;
 	padding: 10px;
 	border-radius: 5px;
@@ -133,13 +148,14 @@
 .input-query {
 	margin: 10px;
 }
-.input-query > input {
+
+.input-query>input {
 	font-size: 1rem;
 	padding: 15px;
 	border-radius: 5px;
 }
 
-.query-sorting > select {
+.query-sorting>select {
 	font-size: 1rem;
 	padding: 15px;
 	margin-left: 5px;
@@ -147,7 +163,7 @@
 	border-radius: 5px;
 }
 
-.query-sorting > select > option {
+.query-sorting>select>option {
 	font-size: 1rem;
 }
 

@@ -2,7 +2,7 @@
 
 export const GITHUB_REPO_SEARCH_URL =
 	" https://api.github.com/search/repositories?q=";
-export const LIMIT_PER_PAGE = 10;
+export const LIMIT_PER_PAGE = 20;
 export const QUERY_DELAY = 300;
 export const QUERY_SORT_OPTIONS = new Map([
 	["stargazers_count", "number"],

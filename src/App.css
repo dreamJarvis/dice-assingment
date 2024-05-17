@@ -63,7 +63,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	position: relative;
+	/* position: relative; */
 }
 
 .repo-data {
@@ -120,9 +120,29 @@
 }
 
 .query-item-page {
+	margin-bottom: 30px;
+}
+
+.query-item-page-setter {
 	font-size: 23px;
-	bottom: 50px;
-	left: 45%;
+	padding: 10px;
+}
+
+.query-item-page-setter-input>input::-webkit-outer-spin-button,
+.query-item-page-setter-input>input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.query-item-page-setter-input>input {
+	font-size: 1rem;
+	padding: 5px;
+}
+
+.query-item-page-setter-input>button {
+	font-size: 1rem;
+	padding: 5px;
+	margin-left: 5px;
 }
 
 .query-item-page>input {

@@ -10,6 +10,9 @@ import Repository from "../repository/Repository";
 import FetchError from "../../Errors/FetchError";
 import PageSetter from "../PageSetter";
 
+/* 
+	TODO: try adding git-hub auth-token in fetch call, to bypass rate-limiting
+*/
 export default function RepositoryPage() {
 	const [query, setQuery] = useState("");
 	const [pageNumber, setPageNumber] = useState(1);
